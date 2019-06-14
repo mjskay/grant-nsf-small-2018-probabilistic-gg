@@ -1,0 +1,129 @@
+---
+title: "grammar plots"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(modelr)
+library(ggridges)
+library(tidybayes)
+```
+
+
+```{r fig.height = 2.1, fig.width = 4}
+mu_b1 = 0
+sd_b1 = 1
+mu_b2 = 3
+sd_b2 = 1
+k = 8
+
+bind_rows(
+  data_frame(
+    b = "b1",
+    A = seq(-3, 7, length.out = 1001),
+    d = dnorm(A, mu_b1, sd_b1)
+  ),
+  data_frame(
+    b = "b2",
+    A = seq(-3, 7, length.out = 1001),
+    d = dnorm(A, mu_b2, sd_b2)
+  )
+) %>%
+  mutate(A = cut_interval(A, k)) %>%
+  within(levels(A) <- paste0("a", 1:k)) %>%
+  group_by(A, b) %>%
+  summarise(d = sum(d)) %>%
+  ggplot(aes(A, d)) +
+  geom_col(color = NA, fill = "red", alpha = .35) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  theme_tidybayes() +
+  theme(
+    panel.grid.major.y = element_line(color = "gray85"),
+    panel.border = element_rect(color = "gray50", fill = NA)
+    ) +
+  facet_grid(b ~ .) +
+  scale_y_continuous(breaks = NULL) +
+  ylab(NULL)
+
+```
+
+```{r}
+ggsave("bars.pdf", height = 2, width = 4, useDingbats = FALSE)
+```
+
+
+```{r fig.height = 2.1, fig.width = 4}
+mu_b1 = 0
+sd_b1 = 1
+mu_b2 = 3
+sd_b2 = 1
+
+densities = bind_rows(
+  data_frame(
+    b = "b1",
+    A = seq(-5, 8, length.out = 1001),
+    d = dnorm(A, mu_b1, sd_b1)
+  ),
+  data_frame(
+    b = "b2",
+    A = seq(-5, 8, length.out = 1001),
+    d = dnorm(A, mu_b2, sd_b2)
+  )
+) %>%
+  ggplot(aes(A, d)) +
+  geom_area(stat = "identity", color = NA, fill = "red", alpha = .35) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  theme_tidybayes() +
+  theme(
+    panel.grid.major.y = element_line(color = "gray85"),
+    panel.border = element_rect(color = "gray50", fill = NA)
+    ) +
+  facet_grid(b ~ .) +
+  scale_y_continuous(breaks = NULL) +
+  xlim(-4, 7) +
+  ylab(NULL)
+
+densities
+```
+
+```{r}
+ggsave("densities.pdf", height = 2, width = 4, useDingbats = FALSE)
+```
+
+
+```{r fig.height = 2.1, fig.width = 4}
+mu_b1 = 0
+sd_b1 = 1
+mu_b2 = 3
+sd_b2 = 1
+
+bind_rows(
+  data_frame(
+    b = "b1",
+    A = qnorm(ppoints(100), mu_b1, sd_b1)
+  ),
+  data_frame(
+    b = "b2",
+    A = qnorm(ppoints(100), mu_b2, sd_b2)
+  )
+) %>%
+  ggplot(aes(x = A)) +
+  geom_dotplot(binwidth = .22, fill = "red", color = NA) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  theme_tidybayes() +
+  theme(
+    panel.grid.major.y = element_line(color = "gray85"),
+    panel.border = element_rect(color = "gray50", fill = NA)
+    ) +
+  facet_grid(b ~ .) +
+  scale_y_continuous(breaks = NULL) +
+  xlim(-4, 7) +
+  ylab(NULL)
+```
+
+```{r}
+ggsave("dotplots.pdf", height = 2, width = 4, useDingbats = FALSE)
+```
+

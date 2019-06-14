@@ -1,0 +1,108 @@
+% TVCG Packages
+\usepackage{mathptmx}
+\usepackage{graphicx}
+
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage{wrapfig}
+
+% Skip paragraphs
+%\usepackage{parskip}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.25em}
+\renewcommand{\baselinestretch}{1.0}
+%\renewcommand{\baselinestretch}{2}
+
+% Change default font to ptsans
+%\usepackage[T1]{fontenc}
+%\usepackage{paratype}
+%\renewcommand{\familydefault}{\sfdefault}
+%\linespread{1.00}
+
+% Change default font to Helvetica
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+%\linespread{1.00}
+
+% Palatino
+%\usepackage[sc]{mathpazo} % add possibly `sc` and `osf` options
+
+% Georgia
+%\usepackage{fontspec}
+%\setmainfont[
+%  Ligatures=TeX,
+%  BoldFont=Georgia Bold.ttf,
+%  ItalicFont=Georgia Italic.ttf,
+%  BoldItalicFont=Georgia Bold Italic.ttf
+%]{Georgia.ttf}
+
+
+% Use TitleSec to change headings
+%\usepackage{titlesec}
+%\titleformat
+%  {\section}
+%  {\normalfont\rmfamily\Large\bfseries}
+%  {\thesection}
+%  {1em}
+%  {}
+
+% Extra Packages
+\usepackage{url}
+\usepackage{epstopdf}
+\usepackage{arydshln} % For \hdashline in tables
+\usepackage{enumitem} % For [noitemsep] in lists
+
+% Coloring author comments
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{Purple}{rgb}{.75,0,.85}
+
+\newif\ifnotes
+\notestrue
+\newcommand{\todo}[1]{\ifnotes {\textcolor{Purple}{\bf TODO: #1\ }} \fi}
+
+% if we want to put in page breaks to assess length
+\newif\iftestbreaks
+\testbreakstrue
+\newcommand{\testbreak}{\iftestbreaks\newpage\fi}
+
+% Useful abbreviations
+\usepackage{xspace}
+\newcommand{\etal}{\emph{et al.}\@\xspace}
+\newcommand{\ie}{\emph{i.e.}\xspace}
+\newcommand{\eg}{\emph{e.g.}\xspace}
+\newcommand{\etc}{\emph{etcetera}\@\xspace}
+\newcommand{\etals}{\mbox{\emph{et~al.}'s }}
+
+% TODO NSF CRI / Gleicher commands
+\def\naive{na\"{\i}ve}
+\def\naively{na\"{\i}vely}
+
+% Droid Sans font
+%\usepackage[defaultsans]{droidsans}
+%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be typewriter style
+%\usepackage[T1]{fontenc}
+%\linespread{1.1}
+
+%% This turns references into clickable hyperlinks.
+\usepackage[bookmarks,backref=true,linkcolor=black]{hyperref} %,colorlinks
+\hypersetup{
+  pdfauthor = {},
+  pdftitle = {},
+  pdfsubject = {},
+  pdfkeywords = {},
+  colorlinks=true,
+  linkcolor= black,
+  citecolor= black,
+  pageanchor=true,
+  urlcolor = blue,
+  plainpages = false,
+  linktocpage
+}
+
+

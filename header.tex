@@ -1,0 +1,99 @@
+\input{packages/packages.tex}
+\input{figures.tex}
+\input{tables.tex}
+
+%% Packages for proposal writing 
+\usepackage[sf,bf,tiny,compact]{titlesec}
+% TODO investigate each
+\usepackage[labeled]{multibib}
+\newcites{m}{References to our work}
+\usepackage{float}
+\usepackage[rightcaption]{sidecap}
+\usepackage[textfont={scriptsize,sf},labelfont={scriptsize,sf,bf}]{caption}
+\usepackage[normalem]{ulem}
+
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+%% setup for proposal variants
+%% for eager variants
+\newif\ifeageri
+%\eageritrue
+\newcommand{\eager}[2] {
+\ifeageri #1 \else #2 \fi
+}
+
+% this is from the documentation
+%\titleformat{\subparagraph}[runin]
+%{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+%\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+
+% for NIH, we need to use letters for the sections
+%% \renewcommand{\thesection}{\Alph{section}}
+
+% if we want to make subsections REALLY tight...
+%\titlespacing{\subsubsection}{0pt}{*1}{*0}
+
+% we want to number paragraphs and subpars, but we don't use subsections
+\setcounter{secnumdepth}{6}
+\def\theparagraph {\thesubsection.\arabic{paragraph}}
+
+
+% Stephen's layout for NSF proposals. NOT maximal size.
+\newlength{\figwidth}
+\setlength{\figwidth}{\textwidth}
+%\newlength{\captionwidth}
+%\setlength{\captionwidth}{1.0\figwidth}
+
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{1ex}
+
+\setlength{\headheight}{0.0cm}
+\setlength{\headsep}{0.0cm}
+\setlength{\voffset}{0in}
+\setlength{\footskip}{.25in}
+
+%% Set margins and width for NSF (without is thin)
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{8.9in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+
+%% no page numbers for NSF
+\pagestyle{empty} \thispagestyle{empty}
+% \pagestyle{plain} \thispagestyle{plain}
+
+% TODO try out
+\newcommand{\boxit}[2][-10pt]{\vspace{#1}
+    \subsubsection*{\framebox{\parbox[t]{\textwidth}{
+    \raggedright \rm #2}}}
+}
+
+\newenvironment{tight_itemize}     {\begin{itemize}[topsep=0pt, partopsep=0pt]     \itemsep -2pt}  {\end{itemize}}
+\newenvironment{tight_enumerate}   {\begin{enumerate}[topsep=0pt, partopsep=0pt]   \itemsep -2pt}  {\end{enumerate}}
+\newenvironment{tight_description} {\begin{description}[topsep=0pt, partopsep=0pt] \itemsep -2pt}  {\end{description}}
+
+% use a macro for the subsections of the related work subsection - so
+% we can change the formatting as need be
+\newcommand{\relatedsection}[1]{\paragraph{#1:}}
+
+% since we use paragraphs without subsections, make sure section does
+% the reset
+\newcommand{\chuckhack}{}
+\newcommand{\mysection}[1]{\section{#1}\setcounter{paragraph}{0}\chuckhack}
+\newcommand{\mysubsection}[1]{\subsection{#1}\setcounter{paragraph}{0}\chuckhack}
+\newcommand{\mysubsubsection}[1]{\paragraph{#1:}\setcounter{subparagraph}{0}\setcounter{subparagraph}{0}\chuckhack}
+
+% this is from the documentation
+%\titleformat{\subparagraph}[runin]
+%{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+%\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+
+% Change title formatting
+\titleformat{\paragraph}[runin]{\sffamily\normalsize\bfseries}
+{\theparagraph}{0pt}{~}[~\ ]
+\titleformat{\subparagraph}[runin]{\normalfont\normalsize\bfseries}
+{\thesubparagraph}{0pt}{~}[~\ ]
+
+\newcommand{\mytitle}{CHS: Small: Developing a Probabilistic Grammar of Graphics\\for Flexible Uncertainty Visualization}

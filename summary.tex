@@ -1,0 +1,28 @@
+\documentclass[11pt]{article}
+
+\input{header.tex}
+%\usepackage{parskip}
+\pagenumbering{gobble}
+
+\begin{document}
+
+\section*{Project Summary: \mytitle}
+\setcounter{section}{1}
+
+% ~300 word Overview
+\noindent\textbf{Overview}\\
+When reporting on high-stakes and uncertain topics ranging from elections to natural disasters, journalists routinely employ uncertainty visualizations in an attempt to help the public answer important questions: \emph{Who will win the next presidential election?} \emph{Should I evacuate in the face of potential flooding?} For example, journalists use ``cones of uncertainty'' to illustrate hurricane path predictions, despite evidence that uncertainty cone visualizations are misinterpreted by the public and the existence of known-better alternative uncertainty visualizations. Why does the adoption of more effective uncertainty visualizations lag? 
+
+Partly, the construction of more sophisticated and effective uncertainty visualizations is more difficult, technically, than the construction of common but less effective uncertainty visualizations, like confidence intervals. For example, the New York Times election needle, a sophisticated, animated uncertainty visualization, is a bespoke JavaScript application whose implementation involves correctly handling probability, sampling, and animation. This technical complexity is not only a barrier to less sophisticated designers, it is also a barrier to sophisticated designers who might wish to rapidly explore many possible visualization prototypes. Put simply, effective uncertainty visualizations are \textbf{difficult to create} and the uncertainty visualization design space is \textbf{costly to explore}.
+
+Visualization toolkits based on the grammar of graphics have been highly successful in reducing barriers to visualization design. These grammars employ simple primitives that can be easily combined to create sophisticated visualizations. However, the grammar of graphics does not include primitives for uncertainty, and constructing complex uncertainty visualizations with it is difficult. This work proposes a \textbf{probabilistic grammar of graphics} that directly incorporates probability distributions to make it easier to explore the design space of uncertainty visualizations. The work will involve systematically cataloging existing uncertainty visualizations, developing a consistent grammar to describe them, then evaluating the potential of that grammar to make it easier for experienced visualization designers to construct uncertainty visualizations.
+
+\noindent \textbf{Keywords:} information visualization; uncertainty visualization; probability.
+
+\noindent \textbf{Intellectual Merit:}\\
+This work seeks to answer: \emph{How would a probabilistic grammar of graphics, which incorporates uncertainty as a first class entity, change how we create uncertainty visualizations?} \emph{Could a simple, consistent probabilistic grammar of graphics easily support a wide range of modern, effective uncertainty visualizations?} \emph{Would a probabilistic grammar of graphics allow designers to more easily explore the space of uncertainty visualizations?} \emph{Would a probabilistic grammar of graphics enable designers to create more correct uncertainty visualizations?} The proposed work will make the creation of sophisticated, easy-to-understand, correct uncertainty visualizations easier for visualization designers of all expertise levels.
+
+\noindent \textbf{Broader Impacts of the Proposed Work:}\\
+The PI will directly integrate the output of this research into teaching a 60-student Professional Master's class in Information Visualization and an Uncertainty Visualization module in the School of Information online Master's degree in Data Science MOOC. Toolkits built on the proposed work will make the creation of sophisticated, easy-to-understand, correct uncertainty visualizations routine for visualization designers. Better uncertainty and risk visualizations will in turn help the public make better decisions under uncertainty across diverse domains, including transit decision-making, medical decision-making, and decision-making during natural disasters.
+
+\end{document}
