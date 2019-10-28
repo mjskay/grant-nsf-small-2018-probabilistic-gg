@@ -4,9 +4,14 @@
 
 %% Packages for proposal writing 
 \usepackage[sf,bf,tiny,compact]{titlesec}
-% TODO investigate each
+
+% Prefixes for self-citations: replace the `m` after \newcites with a different
+% letter to use a different prefix, then update the corresponding commands at the
+% end of main.tex to use the same letter (a comment at the end of main.tex 
+% indicates what to change).
 \usepackage[labeled]{multibib}
 \newcites{m}{References to our work}
+
 \usepackage{float}
 \usepackage[rightcaption]{sidecap}
 \usepackage[textfont={scriptsize,sf},labelfont={scriptsize,sf,bf}]{caption}

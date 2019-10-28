@@ -17,7 +17,7 @@
 
 One domain that has seen a more creative approach to uncertainty visualization in journalistic circles is that of election forecasting. During the past several US elections, forecasters at \textit{FiveThirtyEight.com} have directly displayed probability distributions representing their predictions for which party will control the House, Senate, or win the presidential election, often using elaborate interactive visualizations that allow readers to explore many facets of the predictions \cite{noauthor_forecasting_nodate}. In the 2016 presidential election, the \textit{New York Times} created a forecast ``needle'', which displayed the real-time predicted electoral college margin as election returns were being counted \cite{gregor_aisch_live_2016}. The New York Times election needle employed a sophisticated animated uncertainty visualization---the needle jittered in proportion to the prediction's uncertainty---en example of a \emph{hypothetical outcome plot} (HOPs) \cite{hullman2015hops}. HOPs is an approach that has been found to improve lay people's understanding of uncertainty by allowing them to experience uncertainty as natural frequencies, one animated outcome at a time \cite{hullman2015hops, kale2018hypothetical}. 
 
-While more effective, uncertainty visualizations like hypothetical outcome plots are even harder to produce than traditional uncertainty visualizations: The New York Times election needle is a bespoke dynamic JavaScript application created by one of a small number of premier data journalism outfits; its implementation involves correctly handling probability distributions, sampling, and animation, and these aspects are intertwined in the implementation. Besides hypothetical outcome plots, effective---but difficult-to-implement---animated and static uncertainty visualizations exist across many domains, such as transit arrival prediction \citem{kay2016bus, Fernandes2018}, hurricane path prediction \cite{liu2016hurricane, padilla2017effects, Padilla2015, Cox2013hurricane, Mirzargar2014curve_boxplot}, and medical risk communication \cite{Ancker2006}. This technical complexity is not only a barrier to less sophisticated designers (e.g., who do not have access to an in-house team dedicated to implementing visualizations), but is also a barrier to sophisticated designers who might wish to rapidly explore many possible visualization prototypes before settling on a single approach. Currently, therefore, effective uncertainty visualizations are \textbf{difficult to create} and the uncertainty visualization design space is \textbf{costly to explore}.
+While more effective, uncertainty visualizations like hypothetical outcome plots are even harder to produce than traditional uncertainty visualizations: The New York Times election needle is a bespoke dynamic JavaScript application created by one of a small number of premier data journalism outfits; its implementation involves correctly handling probability distributions, sampling, and animation, and these aspects are intertwined in the implementation. Besides hypothetical outcome plots, effective---but difficult-to-implement---animated and static uncertainty visualizations exist across many domains, such as transit arrival prediction \cite{kay2016bus, Fernandes2018}, hurricane path prediction \cite{liu2016hurricane, padilla2017effects, Padilla2015, Cox2013hurricane, Mirzargar2014curve_boxplot}, and medical risk communication \cite{Ancker2006}. This technical complexity is not only a barrier to less sophisticated designers (e.g., who do not have access to an in-house team dedicated to implementing visualizations), but is also a barrier to sophisticated designers who might wish to rapidly explore many possible visualization prototypes before settling on a single approach. Currently, therefore, effective uncertainty visualizations are \textbf{difficult to create} and the uncertainty visualization design space is \textbf{costly to explore}.
 
 Various formalizations of information visualization construction into \emph{algebras} \cite{bertin1983semiology, mackinlay1986automating} or \emph{grammars} \cite{wilkinson_grammar_2005} have sought to decrease the technical sophistication users need to create visualizations while simultaneously making it possible to explore a wide range of visualizations easily. The most successful of these have been based on the grammar of graphics \cite{wilkinson_grammar_2005}, which underlies ggplot2 \cite{Wickham2010layered_grammar, wickham2016ggplot2} and Vega-Lite \cite{Satyanarayan2017vegalite}, and the similar VizQL algebra \cite{mackinlay2007show}, which underlies Tableau. These algebras (and the toolkits based on them) are successful because they are not based on a set of predefined template visualizations (too restrictive), nor are they based on a low-level graphics API (unrestrictive---but requiring a large amount of code to create even simple visualizations). Instead, they operate at just the right level of abstraction, one which visualization designers also operate in: they formalize notions of \emph{visual channels} (such as position, length, area, color), \emph{geometries} (such as bars, lines, points, ribbons), and \emph{statistical transformations} (such as means, histograms, kernel density estimators). These primitives can be recombined to create sophisticated visualizations easily, facilitating design exploration. However, none of these grammars formalize the notion of uncertainty or probability, requiring users to recombine statistical transformations and geometries (or worse, to transform input data outside of the visualization framework) in order to create effective uncertainty visualizations (both hypothetical outcome plots \cite{hullman2015hops, kale2018hypothetical} and quantile doplots \cite{kay2016bus, Fernandes2018} would require different preparations of the data in order to be visualized within these frameworks, making design exploration cumbersome).
 
@@ -291,21 +291,17 @@ Approaches for Data Visualization Ability Assessment (\$238,848; 09/01/2018--08/
 \section*{References}
 \noindent References to the work of the PI are indicated with an \emph{m}.
 
+% References to our work
+% To use a different prefix, replace the `m` at the end of the three commands below 
+% with a different letter, and update the \newcites command in header.tex (A comment
+% in header.tex indicates what to change).
 \bibliographystylem{abbrv}
 \nocitem{*}
 \bibliographym{bib/ours}
-%\begin{btSect}{bib/ours}
-%\renewcommand{\bibprefix}{*}
-%\section*{References to our work}
-%\btPrintCited
-%\end{btSect}
 
+% Other references
 \bibliographystyle{abbrv}
 \bibliography{bib/others}
-%\begin{btSect}{bib/others}
-%\renewcommand{\bibprefix}{}
-%\section*{Other References}
-%\btPrintCited
-%\end{btSect}
+
 
 \end{document}
